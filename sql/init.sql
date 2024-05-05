@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS blog_posts(
+  id PRIMARY KEY NOT NULL,
+  date DATE NOT NULL,
+  title TEXT NOT NULL,
+  blog_text TEXT NOT NULL
+);
