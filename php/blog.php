@@ -1,3 +1,17 @@
+<?php
+// reference https://sysadmins.tech/how-to-create-a-simple-phpmysql-blog-system/
+
+include 'db/backend_conn.php';
+
+$result = $db->query("SELECT * FROM blog_posts ORDER BY date DESC");
+if (!$result) {
+  die('Error: ' . $db->error);
+}
+  
+$posts = $result->fetch_all(MYSQLI_ASSOC)
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -5,7 +19,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Joshua Lanctot</title>
-    <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico" />
     <!-- Open Sans google font import-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,23 +29,11 @@
     />
     <!-- Stylesheet link -->
     <link rel="stylesheet" type="text/css" href="../css/style.css" />
-    <style>
-      .iframe-class {
-        width:800px; 
-        height:800px;
-      }
-      @media only screen and (max-width: 620px){
-        .iframe-class {
-          width: 100%; 
-          height:600px;
-        }
-      }
-    </style>
 
     <script defer src="../js/index.js"></script>
   </head>
 
-  <body style="overflow: hidden;">
+  <body>
     <!-- Navbar -->
     <header>
       <div class="header-container">
@@ -43,13 +45,13 @@
                 <a class="nav-link" href="../index.html">About</a>
               </li>
               <li class="nav-li">
-                <a class="nav-link" href="../php/blog.php">Blog</a>
+                <a class="nav-link" href="blog.php">Blog</a>
               </li>
               <li class="nav-li">
-                <a class="nav-link" href="projects.html">Projects</a>
+                <a class="nav-link" href="../html/projects.html">Projects</a>
               </li>
               <li class="nav-li">
-                <a class="nav-link" href="contact.html">Contact</a>
+                <a class="nav-link" href="../html/contact.html">Contact</a>
               </li>
             </ul>
           </nav>
@@ -86,32 +88,25 @@
         </div>
       </div>
     </header>
-
-    <div class="container-2">
-      <div class="inner-container-2">
+    
+    <div class="container">
+      <div class="inner-container">
         <!-- Main content -->
-        <section class="contact-stuff">
-          <p class="contact-label">Github:</p>
-          <p class="contact-value"><a class="hub" target="_blank" href='https://github.com/JLance7'>https://github.com/JLance7</a></p>
-
-          <p class="contact-label">You can send me a message</p>
-          <p class="contact-value"><a class="hub" target="_blank" href='https://forms.gle/9VYqhQ4g5HM97WLD8'>Google Form</a></p>
-
-          <p class="contact-label">You can request access to view my resume, please leave a reason</p>
-          <p class="contact-value">
-            <a class="hub" target="_blank" href="https://drive.google.com/file/d/1CD29bJM0jOoGfnAJ3xNOJB4cpPKlCMkx/view?usp=sharing">Resume</a>
-          </p>
-        </section>
-
+        <div class="main-content">
+          <h1 class="opening-header">Blog</h1>
+          <?php foreach ($posts as $post): ?>
+            <div style="margin-bottom: 40px;">
+              <h2><?php echo $post['title']; ?></h2>
+              <p><?php echo $post['date']; ?></p>
+              <p><?php echo $post['blog_text']; ?></p>
+            </div>
+          <?php endforeach; ?>
+        </div>
         <!-- Footer-->
-        <footer style="z-index: 9999;"></footer>
+        <footer>
           <div class="footer-text">Copyright &copy; 2022 Joshua Lanctot</div>
         </footer>
       </div>
-    </div>
-
-    <div style="position: absolute; right: 0; bottom: 1px; z-index: -1;">
-      <img src="../img/cat.jpg" />
     </div>
   </body>
 </html>

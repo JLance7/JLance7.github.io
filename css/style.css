@@ -8,6 +8,8 @@ Dark Grey:#495057
 
 /*Home and layout*/
 
+/* add https://simplecss.org/ maybe */
+
 * {
   margin: 0;
   padding: 0;
@@ -26,6 +28,7 @@ body {
   border-bottom: solid 10px #228be6;
   padding-bottom: 220px;
   overflow-x: hidden;
+  /* background-color: #f2f2f2; */
 }
 
 .container{
@@ -557,7 +560,5 @@ h1, h2, h3, p, ul, .project, .skill-div, table, aside, .pdf{
   }
   .resume{
     font-size: 18px;
-  }
-  
+  } 
 }
-
