@@ -10,7 +10,7 @@ $password = $env["MY_SQL_PASSWORD"];
 $db_host = $host;
 $db_user = $username;
 $db_pass = $password;
-$db_name = 'blog';
+$db_name = $env["MY_SQL_DB"];
 
 // Connect to the database
 $db = new mysqli($db_host, $db_user, $db_pass, $db_name);
