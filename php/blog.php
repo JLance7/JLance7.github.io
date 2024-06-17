@@ -98,7 +98,7 @@ $posts = $result->fetch_all(MYSQLI_ASSOC)
             <div style="margin-bottom: 40px;">
               <h2><?php echo $post['title']; ?></h2>
               <p><?php echo $post['date']; ?></p>
-              <pre><?php echo $post['blog_text']; ?></pre>
+              <p><?php echo $post['blog_text']; ?></p>
             </div>
           <?php endforeach; ?>
         </div>
