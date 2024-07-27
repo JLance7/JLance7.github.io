@@ -300,6 +300,14 @@ aside{
   text-decoration: underline;
 }
 
+.underline-link {
+  text-decoration: underline !important;
+}
+
+.mt-10 {
+  margin-top: 10px;
+}
+
 .resume{
   margin-top: 70px;
 }
